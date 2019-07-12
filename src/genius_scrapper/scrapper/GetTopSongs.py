@@ -4,9 +4,10 @@ from ..scrapper.GeniusLyricScrapper import GeniusLyricScrapper
 
 
 class GetTopSongs:
-    def __init__(self, base_url):
+    def __init__(self, base_url, result_file_path):
         self.url = base_url + "#top-songs"
         self.__driver = webdriver.Chrome()
+        self.__result_file_path = result_file_path
         self.__top_songs = []
 
     def __visit_genius(self):
@@ -39,6 +40,6 @@ class GetTopSongs:
         self.__filter_songs()
         self.__expand_list()
         self.__collect_top_songs()
-        GeniusLyricScrapper(self.__top_songs, "../").call()
+        GeniusLyricScrapper(self.__top_songs, self.__result_file_path).call()
         self.__driver.implicitly_wait(3000)
 

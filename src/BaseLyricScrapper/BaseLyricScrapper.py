@@ -16,7 +16,7 @@ class BaseLyricScrapper:
         self.driver.find_element_by_tag_name("body").send_keys(Keys.COMMAND + "w")
 
     def write_row_to_file(self, row):
-        with open(self.result_file_path, "wb", newline="") as csv_out:
+        with open(self.result_file_path, "a") as csv_out:
             writer = csv.writer(csv_out)
             writer.writerow(row)
 
