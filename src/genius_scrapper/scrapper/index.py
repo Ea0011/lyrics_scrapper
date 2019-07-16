@@ -1,7 +1,7 @@
 import csv
 from genius_scrapper.scrapper.GetTopSongs import GetTopSongs
 
-HEADER = ["Author", "Title", "Lyrics", "Album", "Views"]
+HEADER = ["Author", "Title", "Lyrics", "Album", "Views", "Release.Date"]
 BASE_URL = "https://genius.com/"
 
 
@@ -12,4 +12,4 @@ def scrap(result_file_path):
         writer = csv.writer(scrapped_lyrics)
         writer.writerow(HEADER)
 
-    GetTopSongs(BASE_URL).call()
+    GetTopSongs(BASE_URL, result_file_path).call()

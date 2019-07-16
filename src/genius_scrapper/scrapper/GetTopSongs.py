@@ -24,7 +24,8 @@ class GetTopSongs:
         while True:
             try:
                 load_more_btn = self.__driver.find_element_by_xpath(
-                    "//div[contains(@class, 'Charts__LoadMore')]/div[1]")
+                    "//div[contains(@class, 'Charts__LoadMore')]/div[1]"
+                )
                 load_more_btn.click()
             except NoSuchElementException:
                 break
@@ -42,4 +43,5 @@ class GetTopSongs:
         self.__collect_top_songs()
         GeniusLyricScrapper(self.__top_songs, self.__result_file_path).call()
         self.__driver.implicitly_wait(3000)
+        self.__driver.close()
 
